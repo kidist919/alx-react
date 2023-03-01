@@ -10,6 +10,8 @@ import { getLatestNotification } from "../utils/utils";
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from "../BodySection/BodySection";
 import { user, logOut, AppContext } from "./AppContext";
+import { connect } from 'react-redux';
+
 
 
 const listCourses = [
@@ -157,5 +159,10 @@ class App extends React.Component {
   }
 }
 
+export const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.get('isUserLoggedIn')
+  }
+}
 
-export default App;
+export default connect(mapStateToProps)(App);
